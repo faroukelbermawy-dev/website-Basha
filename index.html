@@ -9,6 +9,46 @@
     <meta property="og:description" content="دار أزياء إليت باشا - جلاليب ملكية بشغل قطن يدوي مذهب، 100% قطن مصري، بدل كلاسيك، وبشوت صوف كشمير." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Extension & Window Setter Safeguard -->
+    <script>
+      (function() {
+        try {
+          var originalFetch = window.fetch;
+          var activeFetch = typeof originalFetch === 'function' ? originalFetch : null;
+          try {
+            Object.defineProperty(window, 'fetch', {
+              get: function() { return activeFetch; },
+              set: function(fn) { activeFetch = fn; },
+              configurable: true,
+              enumerable: true
+            });
+          } catch (e1) {
+            try {
+              if (window.Window && window.Window.prototype) {
+                Object.defineProperty(window.Window.prototype, 'fetch', {
+                  get: function() { return activeFetch; },
+                  set: function(fn) { activeFetch = fn; },
+                  configurable: true,
+                  enumerable: true
+                });
+              }
+            } catch (e2) {}
+          }
+        } catch (e) {}
+
+        // Suppress external extension errors from interfering with the preview runtime
+        window.addEventListener('error', function(event) {
+          if (event && event.filename && (event.filename.indexOf('chrome-extension://') !== -1 || event.filename.indexOf('moz-extension://') !== -1)) {
+            if (typeof event.preventDefault === 'function') {
+              event.preventDefault();
+            }
+            return true;
+          }
+        }, true);
+      })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -18,4 +58,3 @@
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-
