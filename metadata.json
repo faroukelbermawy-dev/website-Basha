@@ -1,0 +1,8 @@
+{
+  "name": "Octave & Wire | Precision Audio & C# E-Commerce Architecture",
+  "description": "Production-grade precision audio equipment store featuring full catalog, cart, checkout, and an interactive ASP.NET Core & C# architecture explorer.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
