@@ -93,9 +93,9 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-xs overflow-y-auto" dir={isAr ? 'rtl' : 'ltr'}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-6 bg-black/80 backdrop-blur-xs overflow-y-auto" dir={isAr ? 'rtl' : 'ltr'}>
       <div 
-        className={`relative w-full max-w-2xl border rounded-2xl shadow-2xl overflow-hidden my-8 transition-colors ${
+        className={`relative w-full max-w-2xl border rounded-2xl shadow-2xl overflow-hidden my-4 sm:my-8 transition-colors ${
           isDark 
             ? 'bg-[#121110] border-[#d4af37]/40 text-stone-100' 
             : 'bg-white border-stone-200 text-stone-900'
@@ -103,7 +103,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className={`p-6 border-b flex items-center justify-between ${
+        <div className={`p-4 sm:p-6 border-b flex items-center justify-between ${
           isDark ? 'border-stone-800 bg-stone-950/80' : 'border-stone-200 bg-stone-50'
         }`}>
           <div className="flex items-center gap-2">
@@ -130,7 +130,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
         </div>
 
         {/* Checkout Form */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-6 max-h-[75vh] overflow-y-auto">
+        <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-5 sm:space-y-6 max-h-[80vh] sm:max-h-[75vh] overflow-y-auto">
           {/* Shipping Address */}
           <div>
             <h3 className="text-xs font-bold uppercase tracking-wider text-[#d4af37] mb-3">

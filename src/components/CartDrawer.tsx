@@ -69,18 +69,18 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
         onClick={onClose} 
       />
 
-      <div className={`fixed inset-y-0 ${isAr ? 'right-0 pl-10' : 'left-0 pr-10'} max-w-full flex`}>
-        <div className={`w-screen max-w-md ${isAr ? 'border-l' : 'border-r'} shadow-2xl flex flex-col transition-colors ${
+      <div className={`fixed inset-y-0 ${isAr ? 'right-0' : 'left-0'} max-w-full flex w-full sm:w-auto`}>
+        <div className={`w-full sm:w-screen sm:max-w-md ${isAr ? 'sm:border-l' : 'sm:border-r'} shadow-2xl flex flex-col transition-colors ${
           isDark 
             ? 'bg-[#0f0e0c] border-[#d4af37]/30 text-stone-100' 
             : 'bg-white border-stone-200 text-stone-900'
         }`}>
           {/* Header */}
-          <div className={`px-6 py-5 border-b flex items-center justify-between ${
+          <div className={`px-4 sm:px-6 py-4 sm:py-5 border-b flex items-center justify-between ${
             isDark ? 'border-stone-800 bg-stone-950/80' : 'border-stone-200 bg-stone-50'
           }`}>
             <div>
-              <h2 className="text-lg font-serif font-bold text-[#d4af37]">
+              <h2 className="text-base sm:text-lg font-serif font-bold text-[#d4af37]">
                 {t.bagTitle}
               </h2>
               <p className={`text-xs mt-0.5 ${isDark ? 'text-stone-400' : 'text-stone-500'}`}>

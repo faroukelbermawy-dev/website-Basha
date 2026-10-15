@@ -39,9 +39,9 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/75 backdrop-blur-sm overflow-y-auto" dir={isAr ? 'rtl' : 'ltr'}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-6 bg-black/75 backdrop-blur-sm overflow-y-auto" dir={isAr ? 'rtl' : 'ltr'}>
       <div 
-        className={`relative w-full max-w-4xl border rounded-2xl shadow-2xl overflow-hidden my-8 transition-colors ${
+        className={`relative w-full max-w-4xl border rounded-2xl shadow-2xl overflow-hidden my-4 sm:my-8 transition-colors ${
           isDark 
             ? 'bg-[#121110] border-[#d4af37]/40 text-stone-100 shadow-[0_0_50px_rgba(0,0,0,0.8)]' 
             : 'bg-white border-stone-200 text-stone-900'
@@ -52,18 +52,18 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
         <button
           onClick={onClose}
           aria-label={isAr ? 'إغلاق' : 'Close'}
-          className={`absolute top-4 ${isAr ? 'left-4' : 'right-4'} z-10 p-2 rounded-full border transition-colors cursor-pointer ${
+          className={`absolute top-3 sm:top-4 ${isAr ? 'left-3 sm:left-4' : 'right-3 sm:right-4'} z-10 p-2 rounded-full border transition-colors cursor-pointer ${
             isDark 
               ? 'bg-stone-900 border-stone-700 text-stone-300 hover:text-white hover:bg-stone-800' 
               : 'bg-white border-stone-200 text-stone-700 hover:text-stone-950 hover:bg-stone-100'
           }`}
         >
-          <X className="w-5 h-5" />
+          <X className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 max-h-[85vh] overflow-y-auto">
+        <div className="grid grid-cols-1 md:grid-cols-12 max-h-[88vh] sm:max-h-[85vh] overflow-y-auto">
           {/* Left Column: Visual Showcase */}
-          <div className={`md:col-span-6 p-6 sm:p-8 flex flex-col justify-between border-b md:border-b-0 ${
+          <div className={`md:col-span-6 p-4 sm:p-8 flex flex-col justify-between border-b md:border-b-0 ${
             isAr ? 'md:border-l' : 'md:border-r'
           } ${
             isDark ? 'bg-[#0d0c0a] border-stone-800' : 'bg-stone-100/70 border-stone-200'
@@ -92,7 +92,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
           </div>
 
           {/* Right Column: Contiguous Purchase Module */}
-          <div className="md:col-span-6 p-6 sm:p-8 flex flex-col justify-between">
+          <div className="md:col-span-6 p-4 sm:p-8 flex flex-col justify-between">
             <div>
               {/* Category & Status */}
               <div className="flex items-center gap-2 text-xs mb-2">
@@ -108,19 +108,19 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               </div>
 
               {/* Title & Price */}
-              <h2 className="text-2xl font-serif font-bold tracking-tight mb-1">
+              <h2 className="text-xl sm:text-2xl font-serif font-bold tracking-tight mb-1">
                 {isAr ? product.nameAr : product.name}
               </h2>
               <p className={`text-xs font-mono mb-3 ${isDark ? 'text-stone-400' : 'text-stone-500'}`}>
                 {isAr ? product.name : product.nameAr}
               </p>
 
-              <div className="flex items-baseline gap-3 mb-4">
-                <span className="text-2xl font-bold font-mono text-[#d4af37] tabular-nums">
+              <div className="flex items-baseline gap-2 sm:gap-3 mb-4 flex-wrap">
+                <span className="text-xl sm:text-2xl font-bold font-mono text-[#d4af37] tabular-nums">
                   {product.price.toLocaleString()} {currency}
                 </span>
                 {product.originalPrice && (
-                  <span className="text-sm text-stone-500 line-through font-mono tabular-nums">
+                  <span className="text-xs sm:text-sm text-stone-500 line-through font-mono tabular-nums">
                     {product.originalPrice.toLocaleString()} {currency}
                   </span>
                 )}
@@ -170,8 +170,8 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   <span className="text-[#d4af37] font-mono text-[11px]">{product.leadTime}</span>
                 </div>
 
-                <div className="flex items-center gap-3">
-                  <div className={`flex items-center border rounded-lg overflow-hidden ${
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                  <div className={`flex items-center justify-center border rounded-lg overflow-hidden shrink-0 ${
                     isDark ? 'border-stone-700 bg-stone-900' : 'border-stone-300 bg-white'
                   }`}>
                     <button
@@ -195,7 +195,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
 
                   <button
                     onClick={handleAdd}
-                    className="flex-1 py-3 px-4 text-xs font-bold uppercase tracking-wider text-stone-950 bg-gradient-to-r from-amber-300 via-[#d4af37] to-amber-500 hover:brightness-110 rounded-lg transition-all flex items-center justify-center gap-2 shadow-md cursor-pointer"
+                    className="flex-1 py-3 px-4 text-xs font-bold uppercase tracking-wider text-stone-950 bg-gradient-to-r from-amber-300 via-[#d4af37] to-amber-500 hover:brightness-110 rounded-lg transition-all flex items-center justify-center gap-2 shadow-md cursor-pointer text-center"
                   >
                     {addedNotice ? (
                       <>

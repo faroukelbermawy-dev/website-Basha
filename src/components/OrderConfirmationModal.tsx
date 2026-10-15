@@ -23,9 +23,9 @@ export const OrderConfirmationModal: React.FC<OrderConfirmationModalProps> = ({
   const currency = isAr ? 'ج.م' : 'EGP';
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-xs overflow-y-auto" dir={isAr ? 'rtl' : 'ltr'}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-6 bg-black/85 backdrop-blur-xs overflow-y-auto" dir={isAr ? 'rtl' : 'ltr'}>
       <div 
-        className={`relative w-full max-w-2xl border rounded-2xl shadow-2xl overflow-hidden my-8 transition-colors ${
+        className={`relative w-full max-w-2xl border rounded-2xl shadow-2xl overflow-hidden my-4 sm:my-8 transition-colors ${
           isDark 
             ? 'bg-[#121110] border-[#d4af37]/40 text-stone-100' 
             : 'bg-white border-stone-200 text-stone-900'
@@ -33,14 +33,14 @@ export const OrderConfirmationModal: React.FC<OrderConfirmationModalProps> = ({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Banner */}
-        <div className="p-6 bg-gradient-to-r from-stone-950 via-[#14120f] to-stone-950 border-b border-[#d4af37]/30 text-stone-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="p-4 sm:p-6 bg-gradient-to-r from-stone-950 via-[#14120f] to-stone-950 border-b border-[#d4af37]/30 text-stone-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full bg-[#d4af37]/20 border border-[#d4af37]/50 flex items-center justify-center text-[#d4af37] shrink-0">
-              <Crown className="w-6 h-6" />
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#d4af37]/20 border border-[#d4af37]/50 flex items-center justify-center text-[#d4af37] shrink-0">
+              <Crown className="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
             <div>
               <p className="text-xs font-mono text-[#d4af37]">{t.orderNumberLabel.replace('{orderNumber}', order.orderNumber)}</p>
-              <h2 className="text-xl font-bold font-serif text-white">{t.orderConfirmedGreeting}</h2>
+              <h2 className="text-lg sm:text-xl font-bold font-serif text-white">{t.orderConfirmedGreeting}</h2>
             </div>
           </div>
 
@@ -54,7 +54,7 @@ export const OrderConfirmationModal: React.FC<OrderConfirmationModalProps> = ({
         </div>
 
         {/* Content */}
-        <div className="p-6 space-y-6 max-h-[70vh] overflow-y-auto">
+        <div className="p-4 sm:p-6 space-y-4 sm:space-y-6 max-h-[75vh] sm:max-h-[70vh] overflow-y-auto">
           {/* Tracking Bar */}
           <div className={`p-4 rounded-xl border ${
             isDark ? 'bg-stone-950/70 border-stone-800' : 'bg-stone-50 border-stone-200'

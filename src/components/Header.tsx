@@ -33,12 +33,12 @@ export const Header: React.FC<HeaderProps> = ({
   const t = TRANSLATIONS[lang];
 
   return (
-    <header className={`sticky top-0 z-40 transition-colors duration-200 border-b backdrop-blur-md ${
+    <header className={`sticky top-0 z-40 w-full max-w-full transition-colors duration-200 border-b backdrop-blur-md ${
       isDark 
         ? 'bg-[#0a0a0a]/95 border-[#d4af37]/25 text-white shadow-[0_4px_20px_rgba(0,0,0,0.5)]' 
         : 'bg-[#ffffff]/95 border-stone-200 text-stone-900 shadow-sm'
     }`}>
-      <div className="max-w-7xl mx-auto flex items-center justify-between gap-6 px-6 py-3.5">
+      <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-6 px-3 sm:px-6 py-2.5 sm:py-3.5">
         {/* Zone 1: Elite Basha Brand Wordmark & Monogram Crest */}
         <button
           onClick={onScrollToCatalog}
@@ -48,7 +48,7 @@ export const Header: React.FC<HeaderProps> = ({
           <EliteBashaLogo isDark={isDark} size="md" />
         </button>
 
-        {/* Zone 2: Navigation links */}
+        {/* Zone 2: Navigation links (Desktop) */}
         <nav className="hidden md:flex items-center gap-6 text-xs font-semibold tracking-wide uppercase">
           <button
             onClick={onScrollToCatalog}
@@ -112,22 +112,40 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
         </nav>
 
-        {/* Zone 3: Language Toggle + Dark/White Toggle + Shopping Bag */}
-        <div className="flex items-center gap-2.5 shrink-0">
+        {/* Zone 3: Mobile Wishlist + Language Toggle + Dark/White Toggle + Shopping Bag */}
+        <div className="flex items-center gap-1 sm:gap-2.5 shrink-0">
+          {/* Mobile Wishlist Button */}
+          <button
+            onClick={onOpenWishlist}
+            aria-label={`Open wishlist with ${wishlistCount} items`}
+            className={`md:hidden relative p-1.5 rounded-lg border transition-all cursor-pointer ${
+              isDark
+                ? 'bg-stone-900/90 text-stone-300 border-[#d4af37]/30 hover:border-[#d4af37]'
+                : 'bg-stone-100 text-stone-700 border-stone-200 hover:bg-stone-200'
+            }`}
+          >
+            <Heart className="w-4 h-4 text-rose-500 fill-rose-500/20" />
+            {wishlistCount > 0 && (
+              <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-rose-600 text-white text-[9px] font-bold flex items-center justify-center">
+                {wishlistCount}
+              </span>
+            )}
+          </button>
+
           {/* Language Toggle Button (عربي / English) */}
           <button
             onClick={onToggleLang}
             title={lang === 'ar' ? 'Switch to English' : 'التحويل إلى اللغة العربية'}
             aria-label={`Switch language to ${lang === 'ar' ? 'English' : 'العربية'}`}
-            className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-lg border transition-all duration-200 cursor-pointer shadow-sm ${
+            className={`flex items-center gap-1 px-2 sm:px-3 py-1.5 text-xs font-bold rounded-lg border transition-all duration-200 cursor-pointer shadow-sm ${
               isDark
                 ? 'bg-stone-900/90 text-[#d4af37] border-[#d4af37]/40 hover:bg-stone-800 hover:border-[#d4af37]'
                 : 'bg-stone-100 text-stone-900 border-stone-300 hover:bg-stone-200'
             }`}
           >
-            <Languages className="w-3.5 h-3.5 text-[#d4af37]" />
-            <span className="font-semibold text-[11px] uppercase tracking-wider">
-              {lang === 'ar' ? 'English' : 'عربي'}
+            <Languages className="w-3.5 h-3.5 text-[#d4af37] shrink-0" />
+            <span className="font-semibold text-[10px] sm:text-[11px] uppercase tracking-wider">
+              {lang === 'ar' ? 'EN' : 'عربي'}
             </span>
           </button>
 
@@ -135,7 +153,7 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             onClick={onToggleTheme}
             aria-label={`Switch to ${isDark ? 'White' : 'Dark'} mode`}
-            className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border transition-all duration-200 cursor-pointer ${
+            className={`p-1.5 sm:px-3 sm:py-1.5 text-xs font-semibold rounded-lg border transition-all duration-200 cursor-pointer ${
               isDark
                 ? 'bg-stone-900/90 text-amber-300 border-[#d4af37]/40 hover:bg-stone-800 hover:border-[#d4af37]'
                 : 'bg-stone-100 text-stone-800 border-stone-300 hover:bg-stone-200 hover:text-stone-900'
@@ -144,12 +162,12 @@ export const Header: React.FC<HeaderProps> = ({
             {isDark ? (
               <>
                 <Sun className="w-3.5 h-3.5 text-amber-400" />
-                <span className="font-mono text-[11px] hidden sm:inline">{t.switchThemeLight}</span>
+                <span className="font-mono text-[11px] hidden md:inline ml-1">{t.switchThemeLight}</span>
               </>
             ) : (
               <>
                 <Moon className="w-3.5 h-3.5 text-stone-700" />
-                <span className="font-mono text-[11px] hidden sm:inline">{t.switchThemeDark}</span>
+                <span className="font-mono text-[11px] hidden md:inline ml-1">{t.switchThemeDark}</span>
               </>
             )}
           </button>
@@ -158,14 +176,14 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             onClick={onOpenCart}
             aria-label={`Open shopping cart with ${cartCount} items`}
-            className={`flex items-center gap-2 px-3.5 py-1.5 text-xs font-bold rounded-lg transition-all shadow-sm cursor-pointer ${
+            className={`flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1.5 text-xs font-bold rounded-lg transition-all shadow-sm cursor-pointer shrink-0 ${
               isDark
                 ? 'bg-gradient-to-r from-amber-400 via-[#d4af37] to-amber-500 text-stone-950 hover:brightness-110 shadow-[0_0_15px_rgba(212,175,55,0.3)]'
                 : 'bg-stone-950 text-white hover:bg-stone-800'
             }`}
           >
-            <ShoppingBag className={`w-3.5 h-3.5 ${isDark ? 'text-stone-950' : 'text-stone-200'}`} />
-            <span>{t.navBag}</span>
+            <ShoppingBag className={`w-3.5 h-3.5 shrink-0 ${isDark ? 'text-stone-950' : 'text-stone-200'}`} />
+            <span className="hidden sm:inline">{t.navBag}</span>
             <span className={`font-mono tabular-nums px-1.5 py-0.2 rounded text-[11px] font-bold ${
               isDark ? 'bg-stone-950 text-amber-300' : 'bg-stone-800 text-stone-200'
             }`}>

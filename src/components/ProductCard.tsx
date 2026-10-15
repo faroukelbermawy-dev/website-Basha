@@ -95,7 +95,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       </div>
 
       {/* Card Body */}
-      <div className="flex flex-col flex-1 p-5">
+      <div className="flex flex-col flex-1 p-4 sm:p-5">
         {/* Category & Stock (Clean unboxed metadata) */}
         <div className="flex items-center justify-between text-xs mb-1.5">
           <div className="flex items-center gap-1.5">
@@ -132,7 +132,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </p>
 
         {/* Sizes Preview */}
-        <div className="flex items-center gap-1.5 mb-4 text-[10px] font-mono">
+        <div className="flex flex-wrap items-center gap-1.5 mb-4 text-[10px] font-mono">
           <span className={isDark ? 'text-stone-400' : 'text-stone-500'}>{t.sizesLabel}</span>
           {product.sizes.slice(0, 4).map((s, idx) => (
             <span key={idx} className={`px-1.5 py-0.5 rounded text-[10px] font-semibold ${
@@ -147,15 +147,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </div>
 
         {/* Price Row & Action */}
-        <div className={`flex items-center justify-between pt-3 border-t ${
+        <div className={`flex items-center justify-between gap-2 pt-3 border-t ${
           isDark ? 'border-stone-800/80' : 'border-stone-100'
         }`}>
-          <div className="flex items-baseline gap-2">
-            <span className="text-lg font-bold font-mono tabular-nums text-[#d4af37]">
+          <div className="flex items-baseline gap-1.5 sm:gap-2 flex-wrap">
+            <span className="text-base sm:text-lg font-bold font-mono tabular-nums text-[#d4af37]">
               {product.price.toLocaleString()} {currency}
             </span>
             {product.originalPrice && (
-              <span className="text-xs text-stone-500 line-through font-mono tabular-nums">
+              <span className="text-[11px] sm:text-xs text-stone-500 line-through font-mono tabular-nums">
                 {product.originalPrice.toLocaleString()} {currency}
               </span>
             )}
@@ -163,7 +163,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
           <button
             onClick={() => onAddToCart(product)}
-            className={`px-3 py-1.5 text-xs font-bold rounded-md transition-all whitespace-nowrap cursor-pointer ${
+            className={`px-3 py-1.5 text-xs font-bold rounded-md transition-all whitespace-nowrap cursor-pointer shrink-0 ${
               isDark
                 ? 'bg-[#d4af37] text-stone-950 hover:bg-amber-300'
                 : 'bg-stone-900 text-white hover:bg-stone-800'

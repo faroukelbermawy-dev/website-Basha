@@ -173,7 +173,7 @@ export default function App() {
 
   return (
     <div 
-      className={`min-h-screen flex flex-col transition-colors duration-200 selection:bg-[#d4af37] selection:text-black ${
+      className={`min-h-screen w-full max-w-full overflow-x-hidden flex flex-col transition-colors duration-200 selection:bg-[#d4af37] selection:text-black ${
         theme === 'dark' ? 'bg-[#0a0a0a] text-white' : 'bg-[#fafaf9] text-stone-900'
       }`} 
       dir={lang === 'ar' ? 'rtl' : 'ltr'}

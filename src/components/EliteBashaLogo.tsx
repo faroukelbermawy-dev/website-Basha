@@ -13,14 +13,14 @@ export const EliteBashaLogo: React.FC<EliteBashaLogoProps> = ({
   showSubtitle = true,
   size = 'md'
 }) => {
-  const iconSize = size === 'sm' ? 'w-7 h-7' : size === 'lg' ? 'w-12 h-12' : 'w-9 h-9';
-  const titleSize = size === 'sm' ? 'text-sm' : size === 'lg' ? 'text-2xl' : 'text-lg';
+  const iconSize = size === 'sm' ? 'w-7 h-7' : size === 'lg' ? 'w-10 h-10 sm:w-12 sm:h-12' : 'w-7 h-7 sm:w-9 sm:h-9';
+  const titleSize = size === 'sm' ? 'text-xs sm:text-sm' : size === 'lg' ? 'text-xl sm:text-2xl' : 'text-sm sm:text-lg';
 
   return (
-    <div className={`flex items-center gap-2.5 select-none ${className}`}>
+    <div className={`flex items-center gap-2 sm:gap-2.5 select-none ${className}`}>
       {/* Bespoke Royal Pasha Monogram Crest */}
       <div className={`relative ${iconSize} shrink-0 flex items-center justify-center rounded-lg bg-gradient-to-br from-[#1c1917] via-[#0c0a09] to-[#000000] border border-[#d4af37]/60 shadow-[0_0_12px_rgba(212,175,55,0.25)]`}>
-        <svg viewBox="0 0 100 100" className="w-full h-full p-1" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 100 100" className="w-full h-full p-0.5 sm:p-1" fill="none" xmlns="http://www.w3.org/2000/svg">
           {/* Subtle Outer Diamond Shield */}
           <rect x="50" y="8" width="59" height="59" rx="6" transform="rotate(45 50 8)" stroke="url(#goldGradient)" strokeWidth="2.5" />
           
@@ -56,7 +56,7 @@ export const EliteBashaLogo: React.FC<EliteBashaLogoProps> = ({
           </span>
         </div>
         {showSubtitle && (
-          <span className={`text-[10px] tracking-widest font-medium uppercase mt-0.5 ${isDark ? 'text-stone-400' : 'text-stone-500'}`}>
+          <span className={`text-[9px] sm:text-[10px] tracking-widest font-medium uppercase mt-0.5 hidden xs:inline sm:inline ${isDark ? 'text-stone-400' : 'text-stone-500'}`}>
             إليت باشا · Haute Couture
           </span>
         )}

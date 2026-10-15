@@ -220,17 +220,17 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
   };
 
   return (
-    <section id="catalog-section" className={`max-w-7xl mx-auto px-6 py-12 transition-colors duration-200 ${
+    <section id="catalog-section" className={`max-w-7xl mx-auto px-3 sm:px-6 py-8 sm:py-12 transition-colors duration-200 ${
       isDark ? 'text-white' : 'text-stone-900'
     }`} dir={isAr ? 'rtl' : 'ltr'}>
       {/* Title & Search bar */}
-      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8">
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 sm:gap-6 mb-6 sm:mb-8">
         <div>
           <div className="flex items-center gap-2 text-xs font-semibold text-[#d4af37] uppercase tracking-wider mb-1">
             <Sparkles className="w-3.5 h-3.5" />
             <span>{t.catalogKicker}</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-serif font-bold tracking-tight">
+          <h2 className="text-xl sm:text-3xl font-serif font-bold tracking-tight">
             {t.catalogTitle}
           </h2>
           <p className={`text-xs sm:text-sm mt-1 ${isDark ? 'text-stone-400' : 'text-stone-500'}`}>
@@ -239,7 +239,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
         </div>
 
         {/* Search Bar with Dedicated Search Button */}
-        <form onSubmit={handleSearchSubmit} className="flex items-center gap-2 w-full lg:w-auto">
+        <form onSubmit={handleSearchSubmit} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full lg:w-auto">
           <div className="relative flex-1 lg:w-80">
             <Search className={`w-4 h-4 absolute ${isAr ? 'right-3' : 'left-3'} top-1/2 -translate-y-1/2 text-stone-400`} />
             <input
@@ -265,53 +265,55 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
             )}
           </div>
 
-          {/* Search Button requested by user */}
-          <button
-            type="submit"
-            className="flex items-center gap-1.5 px-4 py-2.5 text-xs font-bold rounded-lg transition-all shadow-sm bg-gradient-to-r from-amber-400 via-[#d4af37] to-amber-500 text-stone-950 hover:brightness-110 shrink-0 cursor-pointer"
-          >
-            <Search className="w-3.5 h-3.5" />
-            <span>{t.searchButton}</span>
-          </button>
+          <div className="flex items-center gap-2">
+            {/* Search Button requested by user */}
+            <button
+              type="submit"
+              className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-4 py-2.5 text-xs font-bold rounded-lg transition-all shadow-sm bg-gradient-to-r from-amber-400 via-[#d4af37] to-amber-500 text-stone-950 hover:brightness-110 shrink-0 cursor-pointer"
+            >
+              <Search className="w-3.5 h-3.5" />
+              <span>{t.searchButton}</span>
+            </button>
 
-          {/* Advanced Filters Toggle Button */}
-          <button
-            type="button"
-            onClick={() => setShowFiltersPanel((prev) => !prev)}
-            className={`flex items-center gap-1.5 px-3.5 py-2.5 text-xs font-semibold rounded-lg border transition-all shrink-0 cursor-pointer ${
-              showFiltersPanel || activeFiltersCount > 0
-                ? isDark 
-                  ? 'bg-stone-900 text-[#d4af37] border-[#d4af37]' 
-                  : 'bg-amber-50 text-amber-900 border-amber-300'
-                : isDark
-                ? 'bg-stone-900/80 text-stone-300 border-stone-800 hover:border-stone-700'
-                : 'bg-stone-100 text-stone-700 border-stone-300 hover:bg-stone-200'
-            }`}
-          >
-            <SlidersHorizontal className="w-3.5 h-3.5 text-[#d4af37]" />
-            <span className="hidden sm:inline">{t.filtersButton}</span>
-            {activeFiltersCount > 0 && (
-              <span className="w-4 h-4 rounded-full bg-[#d4af37] text-stone-950 text-[10px] font-bold flex items-center justify-center">
-                {activeFiltersCount}
-              </span>
-            )}
-          </button>
+            {/* Advanced Filters Toggle Button */}
+            <button
+              type="button"
+              onClick={() => setShowFiltersPanel((prev) => !prev)}
+              className={`flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-3.5 py-2.5 text-xs font-semibold rounded-lg border transition-all shrink-0 cursor-pointer ${
+                showFiltersPanel || activeFiltersCount > 0
+                  ? isDark 
+                    ? 'bg-stone-900 text-[#d4af37] border-[#d4af37]' 
+                    : 'bg-amber-50 text-amber-900 border-amber-300'
+                  : isDark
+                  ? 'bg-stone-900/80 text-stone-300 border-stone-800 hover:border-stone-700'
+                  : 'bg-stone-100 text-stone-700 border-stone-300 hover:bg-stone-200'
+              }`}
+            >
+              <SlidersHorizontal className="w-3.5 h-3.5 text-[#d4af37]" />
+              <span>{t.filtersButton}</span>
+              {activeFiltersCount > 0 && (
+                <span className="w-4 h-4 rounded-full bg-[#d4af37] text-stone-950 text-[10px] font-bold flex items-center justify-center">
+                  {activeFiltersCount}
+                </span>
+              )}
+            </button>
+          </div>
         </form>
       </div>
 
       {/* Primary Category Filter Bar */}
-      <div className={`flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 mb-4 border-b ${
+      <div className={`flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 mb-4 border-b ${
         isDark ? 'border-stone-800' : 'border-stone-200'
       }`}>
-        {/* Category buttons */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 lg:pb-0 scrollbar-none">
+        {/* Category buttons - scroll horizontally edge to edge on mobile */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 scrollbar-none -mx-3 px-3 sm:mx-0 sm:px-0">
           {categories.map((cat) => {
             const isActive = selectedCategory === cat.id;
             return (
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-3.5 py-2 text-xs font-bold rounded-lg whitespace-nowrap transition-all cursor-pointer ${
+                className={`px-3 sm:px-3.5 py-2 text-xs font-bold rounded-lg whitespace-nowrap transition-all cursor-pointer shrink-0 ${
                   isActive
                     ? 'bg-gradient-to-r from-amber-400 via-[#d4af37] to-amber-500 text-stone-950 shadow-md'
                     : isDark
@@ -326,10 +328,10 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
         </div>
 
         {/* Quick Sorting Dropdown with Alphabetical and Price options */}
-        <div className={`flex items-center gap-3 shrink-0 text-xs ${
+        <div className={`flex items-center justify-between sm:justify-start gap-3 shrink-0 text-xs ${
           isDark ? 'text-stone-300' : 'text-stone-600'
         }`}>
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5 w-full sm:w-auto justify-between sm:justify-start">
             <span className={isDark ? 'text-stone-400' : 'text-stone-500'}>{t.sortLabel}</span>
             <select
               value={sortBy}
@@ -686,7 +688,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
 
       {/* Product Cards Grid */}
       {filteredProducts.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {filteredProducts.map((product) => (
             <ProductCard
               key={product.id}

@@ -20,7 +20,7 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToTop, theme, lang }) =>
         ? 'bg-[#080706] border-stone-800 text-stone-300' 
         : 'bg-stone-900 border-stone-800 text-stone-300'
     }`}>
-      <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
           <div className="space-y-3">
@@ -122,13 +122,13 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToTop, theme, lang }) =>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-stone-500">
+        <div className="pt-8 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-stone-500 text-center sm:text-start">
           <p>{t.footerCopyright}</p>
-          <div className="flex items-center gap-4 text-[#d4af37]">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-2 sm:gap-4 text-[#d4af37]">
             <span>{isAr ? '100% قطن مصري فاخر' : '100% Pure Egyptian Cotton'}</span>
-            <span aria-hidden="true">·</span>
+            <span aria-hidden="true" className="hidden xs:inline">·</span>
             <span>{isAr ? 'شغل قطن يدوي راقي' : 'Handcrafted Cotton Stitching'}</span>
-            <span aria-hidden="true">·</span>
+            <span aria-hidden="true" className="hidden xs:inline">·</span>
             <span>{isAr ? 'توصيل ومعاينة لكافة المحافظات' : 'Nationwide Fitting & Delivery'}</span>
           </div>
         </div>

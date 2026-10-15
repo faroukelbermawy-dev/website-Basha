@@ -24,7 +24,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreCatalog, theme, lang }) => 
       {/* Subtle Background Gold Aura */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#d4af37]/10 rounded-full blur-3xl pointer-events-none" />
       
-      <div className="max-w-7xl mx-auto px-6 py-12 md:py-16 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16 relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           {/* Left Column: Brand Story & CTA */}
           <div className="lg:col-span-7 flex flex-col justify-center">
@@ -39,21 +39,21 @@ export const Hero: React.FC<HeroProps> = ({ onExploreCatalog, theme, lang }) => 
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold tracking-tight leading-[1.18] text-balance mb-4">
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-serif font-bold tracking-tight leading-[1.2] text-balance mb-4">
               {t.heroTitlePrefix} <br/>
               <span className="bg-gradient-to-r from-amber-200 via-[#d4af37] to-amber-500 bg-clip-text text-transparent">
                 {t.heroTitleHighlight}
               </span>
             </h1>
 
-            <p className={`text-sm sm:text-base max-w-xl leading-relaxed mb-8 ${isDark ? 'text-stone-300' : 'text-stone-600'}`}>
+            <p className={`text-xs sm:text-base max-w-xl leading-relaxed mb-6 sm:mb-8 ${isDark ? 'text-stone-300' : 'text-stone-600'}`}>
               {t.heroDescription}
             </p>
 
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <button
                 onClick={onExploreCatalog}
-                className={`flex items-center gap-2 px-6 py-3 text-xs font-bold uppercase tracking-wider rounded-lg transition-all shadow-md cursor-pointer ${
+                className={`flex items-center justify-center gap-2 px-6 py-3 text-xs font-bold uppercase tracking-wider rounded-lg transition-all shadow-md cursor-pointer ${
                   isDark
                     ? 'bg-gradient-to-r from-amber-400 via-[#d4af37] to-amber-500 text-stone-950 hover:brightness-110 shadow-[0_0_20px_rgba(212,175,55,0.35)]'
                     : 'bg-stone-950 text-white hover:bg-stone-800'
@@ -68,7 +68,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreCatalog, theme, lang }) => 
                   const el = document.getElementById('craftsmanship-section');
                   el?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className={`flex items-center gap-2 px-5 py-3 text-xs font-semibold rounded-lg border transition-colors cursor-pointer ${
+                className={`flex items-center justify-center gap-2 px-5 py-3 text-xs font-semibold rounded-lg border transition-colors cursor-pointer ${
                   isDark
                     ? 'bg-stone-900/80 text-amber-300 border-[#d4af37]/40 hover:bg-stone-800 hover:border-[#d4af37]'
                     : 'bg-white text-stone-800 border-stone-300 hover:bg-stone-50'
@@ -80,24 +80,24 @@ export const Hero: React.FC<HeroProps> = ({ onExploreCatalog, theme, lang }) => 
             </div>
 
             {/* Proof Points: explicitly 100% قطن مصري and شغل قطن يدوي */}
-            <div className={`grid grid-cols-3 gap-6 pt-8 mt-8 border-t text-xs ${
+            <div className={`grid grid-cols-3 gap-2 sm:gap-6 pt-6 sm:pt-8 mt-6 sm:mt-8 border-t text-xs ${
               isDark ? 'border-stone-800 text-stone-300' : 'border-stone-200 text-stone-600'
             }`}>
               <div>
-                <p className="text-lg font-bold font-serif text-[#d4af37]">{t.heroProofCotton}</p>
-                <p className={`text-[11px] mt-0.5 ${isDark ? 'text-stone-400' : 'text-stone-500'}`}>
+                <p className="text-sm sm:text-lg font-bold font-serif text-[#d4af37] leading-tight">{t.heroProofCotton}</p>
+                <p className={`text-[10px] sm:text-[11px] mt-0.5 leading-snug ${isDark ? 'text-stone-400' : 'text-stone-500'}`}>
                   {t.heroProofCottonSub}
                 </p>
               </div>
               <div>
-                <p className="text-lg font-bold font-serif text-[#d4af37]">{t.heroProofHandwork}</p>
-                <p className={`text-[11px] mt-0.5 ${isDark ? 'text-stone-400' : 'text-stone-500'}`}>
+                <p className="text-sm sm:text-lg font-bold font-serif text-[#d4af37] leading-tight">{t.heroProofHandwork}</p>
+                <p className={`text-[10px] sm:text-[11px] mt-0.5 leading-snug ${isDark ? 'text-stone-400' : 'text-stone-500'}`}>
                   {t.heroProofHandworkSub}
                 </p>
               </div>
               <div>
-                <p className="text-lg font-bold font-serif text-[#d4af37]">{t.heroProofInspection}</p>
-                <p className={`text-[11px] mt-0.5 ${isDark ? 'text-stone-400' : 'text-stone-500'}`}>
+                <p className="text-sm sm:text-lg font-bold font-serif text-[#d4af37] leading-tight">{t.heroProofInspection}</p>
+                <p className={`text-[10px] sm:text-[11px] mt-0.5 leading-snug ${isDark ? 'text-stone-400' : 'text-stone-500'}`}>
                   {t.heroProofInspectionSub}
                 </p>
               </div>
